@@ -1,5 +1,7 @@
 package com.gbs;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,9 +48,15 @@ public class Application {
 					.val();
 			sources.add(source);
 		}
-		System.out.println(gson.toJson(sources));
-		
-		
+		try {
+			FileWriter writer = new FileWriter("sources.json");
+			writer.write(gson.toJson(sources));
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
 		Set<Document> documents = new HashSet<>();
 		for (int i = 0; i < REPORT_COUNT; i++) {
 			int sourceCount = mockNeat.ints().range(REPORT_SOURCE_MIN,REPORT_SOURCE_MAX).val();
@@ -60,7 +68,7 @@ public class Application {
 					.field("type", mockNeat.from(docType))
 					.field("internalId", mockNeat.uuids())
 					.val();
-			
+
 			doc.setSource(new HashSet<>());
 			doc.setSourceObjects(new HashSet<>());
 
@@ -79,7 +87,15 @@ public class Application {
 			}
 			documents.add(doc);
 		}
-		
-		System.out.println(gson.toJson(documents));
+
+		try {
+			FileWriter writer = new FileWriter("reports.json");
+			writer.write(gson.toJson(documents));
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
 	}
 }
