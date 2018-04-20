@@ -18,7 +18,7 @@ public class Application {
 	private static int SOURCE_COUNT = 50;
 	private static int SOURCEOBJ_MIN = 20;
 	private static int SOURCEOBJ_MAX = 40;
-	private static int REPORT_COUNT = 10;
+	private static int REPORT_COUNT = 10000;
 	private static int REPORT_SOURCE_MIN = 1;
 	private static int REPORT_SOURCE_MAX = 4;
 	private static int REPORT_SOURCEOBJ_MIN = 5;
